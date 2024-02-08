@@ -20,7 +20,7 @@
                 {{ $post->user->name }}
             </a>
             <br/>
-            Опубликовано в {{ $post->getFormattedDate() }}
+            Опубликовано в {{ $post->getFormattedDate() }} {{ $post->human_read_time }}
         </p>
         <a href="{{ route('view', $post) }}" class="pb-6">
             {{ $post->shortBody() }}
