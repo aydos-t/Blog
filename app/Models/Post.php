@@ -47,9 +47,9 @@ class Post extends Model
 //        return $this->published_at->format('F jS Y');
     }
 
-    public function shortBody(): string
+    public function shortBody($words = 30): string
     {
-        return Str::words(strip_tags($this->body), 30);
+        return Str::words(strip_tags($this->body), $words);
     }
 
     public function getThumbnail()

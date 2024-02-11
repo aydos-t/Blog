@@ -15,17 +15,19 @@
         <a href="{{ route('view', $post) }}" class="text-3xl font-bold hover:text-gray-700 pb-4">
             {{ $post->title }}
         </a>
-        <p href="#" class="text-sm pb-3">
-            Автор: <a href="#" class="font-semibold hover:text-gray-800">
-                {{ $post->user->name }}
-            </a>
-            <br/>
-            Опубликовано в {{ $post->getFormattedDate() }} {{ $post->human_read_time }}
-        </p>
+        @if ($showAuthor)
+            <p href="#" class="text-sm pb-3">
+                Автор: <a href="#" class="font-semibold hover:text-gray-800">
+                    {{ $post->user->name }}
+                </a>
+                <br/>
+                Опубликовано в {{ $post->getFormattedDate() }} {{ $post->human_read_time }}
+            </p>
+        @endif
         <a href="{{ route('view', $post) }}" class="pb-6">
             {{ $post->shortBody() }}
         </a>
-        <a href="#" class=" text-gray-800 hover:text-black">
+        <a href="{{ route('view', $post) }}" class=" text-gray-800 hover:text-black">
             Подробнее... <i class="fas fa-arrow-right"></i>
         </a>
     </div>
