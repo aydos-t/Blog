@@ -125,7 +125,6 @@ class PostController extends Controller
             ->first();
 
         $user = $request->user();
-
         PostView::create([
             'ip_address' => $request->ip(),
             'user_agent' => $request->userAgent(),
@@ -139,12 +138,12 @@ class PostController extends Controller
     public function byCategory(Category $category)
     {
         $posts = Post::query()
-            ->join('category_post', 'post.id', '=', 'category_post.post_id')
+            ->join('category_post', 'posts.id', '=', 'category_post.post_id')
             ->where('category_post.category_id', '=', $category->id)
             ->where('active', '=', true)
             ->whereDate('published_at', '<=', Carbon::now())
             ->orderBy('published_at', 'desc')
-            ->paginate(100);
+            ->paginate(10);
 
         return view('post.index', compact('posts','category'));
     }
